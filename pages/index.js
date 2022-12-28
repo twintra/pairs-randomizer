@@ -55,7 +55,7 @@ export default function Home() {
       "pair": randomName,
     }
 
-    await fetch(url, {
+    const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'same-origin', // no-cors, *cors, same-origin
       headers: {
@@ -66,8 +66,10 @@ export default function Home() {
     .then(res => res.json())
     .then(data=> {
       setTimeout(loadData, 100);
+      console.log(data);
       return data
     });
+    
   }
   function onTextFieldChange(e) {
     setTextFieldValue(e.target.value)
