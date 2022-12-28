@@ -1,16 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import pool from "/public/data/pool.json"
-import pairedName from "/public/data/paired_name.json"
+import pool from "/public/../json/pool.json"
+import pairedName from "/public/../json/paired_name.json"
+import path from 'path';
 const fs = require('fs');
 
 function savePool(data) {
   console.log(data);
-  
-  fs.writeFileSync('public/data/pool.json', JSON.stringify(data));
+  const jsonDirectory = path.join(process.cwd(), 'json');
+  fs.writeFileSync(jsonDirectory +'/pool.json', JSON.stringify(data));
 }
 function savePair(data) {
   console.log(data);
-  fs.writeFileSync('public/data/paired_name.json', JSON.stringify(data));
+  const jsonDirectory = path.join(process.cwd(), 'json');
+  fs.writeFileSync(jsonDirectory +'/paired_name.json', JSON.stringify(data));
 }
 
 export default function handler(req, res) {
